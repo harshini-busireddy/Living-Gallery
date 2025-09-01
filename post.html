@@ -37,20 +37,14 @@
 
   <section class="comments">
     <h2>Comments</h2>
-    <script src="https://giscus.app/client.js"
-          data-repo="Harshini-Busireddy/living-gallery"
-          data-repo-id="R_kgDOPn2b7g"
-          data-category="Post Comments"
-          data-category-id="DIC_kwDOPn2b7s4Cu19c"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="cobalt"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
+    <div class="commentbox"></div>
+    <script src="https://unpkg.com/commentbox.io/dist/commentBox.min.js"></script>
+    <script>
+      commentBox('5690788239376384-proj', {
+        className: 'commentbox', // matches the div above
+        defaultBoxId: 'living-gallery', 
+        sortOrder: 'best', // or 'newest'
+      });
     </script>
   </section>
   
