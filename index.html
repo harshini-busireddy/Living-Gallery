@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <h1 id="site-title">Living Gallery</h1>
+  <p class="tagline" id="site-tagline">Life in moments, woven by your support.</p>
+</header>
+<main id="grid" class="grid"></main>
+
+<template id="card-template">
+  <article class="card">
+    <a class="card-link">
+      <div class="swiper card-swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      </div>
+      <div class="card-meta">
+        <h2 class="card-title"></h2>
+        <div class="card-submeta">
+          <span class="label">Categories:</span> <span class="card-cats"></span>
+          <span class="dot">•</span>
+          <span class="label">Dates:</span> <span class="card-date"></span>
+        </div>
+        <p class="card-excerpt"></p>
+      </div>
+    </a>
+  </article>
+</template>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Post • Living Gallery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a href="./" class="back">&larr; Back</a>
+  <h1 id="post-title">Post</h1>
+  <div class="post-submeta">
+    <span id="post-cats"></span><span class="dot">•</span>
+    <span id="post-date-top"></span><span class="dot">•</span>
+    <span id="post-id"></span>
+  </div>
+</header>
+
+<main class="post">
+  <div class="swiper post-swiper">
+    <div class="swiper-wrapper" id="post-slides"></div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+
+  <article class="post-body">
+    <div id="post-text"></div>
+  </article>
+
+  <footer class="post-footer">
+    <p>🦋 Want to support or contact me?<br>
+    Visit: <strong><a id="support-link" href="https://linktr.ee/support.harshini" target="_blank">https://linktr.ee/support.harshini</a></strong></p>
+  </footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+function toYmd(d){ try{ return d.replace(/[^0-9-]/g,'').slice(0,10).replaceAll('/','-'); }catch(e){ return ''; } }
+function earliestDateStr(post){
+  const ds = Array.isArray(post.dates)?post.dates.map(x=>x.date||x):[];
+  const clean=ds.map(toYmd).filter(Boolean).sort();
+  return clean[0]||'';
+}
+
+const params=new URLSearchParams(location.search);
+const slug=params.get('slug');
+fetch('assets/posts.json').then(r=>r.json()).then(posts=>{
+  const post=posts.find(p=>p.slug===slug)||posts[0];
+  if(!post){document.body.innerHTML='<p>No post found.</p>';return;}
+  if(!post.id){const ymd=earliestDateStr(post).replace(/-/g,'');post.id=`HB-LG-${ymd}-01`;post.slug=post.id;}
+  document.getElementById('post-title').textContent=post.title;
+  document.getElementById('post-id').textContent='ID: '+post.id;
+  document.getElementById('post-cats').textContent=(post.categories||[]).join(', ');
+  document.getElementById('post-date-top').textContent=(post.dates||[]).map(d=>new Date(d.date||d).toLocaleDateString()).join(', ');
+  document.getElementById('post-text').innerHTML=post.html||'';
+  const wrap=document.getElementById('post-slides');
+  (post.images||[]).forEach(src=>{const s=document.createElement('div');s.className='swiper-slide';const i=document.createElement('img');i.src=src;s.appendChild(i);wrap.appendChild(s);});
+  new Swiper('.post-swiper',{pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});
+  fetch('assets/site.json').then(r=>r.json()).then(cfg=>{if(cfg.linktree_url){const a=document.getElementById('support-link');a.href=cfg.linktree_url;a.textContent=cfg.linktree_url;}});
+});
+</script>
+</body>
+</html>
