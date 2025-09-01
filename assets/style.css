@@ -1,1 +1,81 @@
-body{font-family:sans-serif;margin:0;padding:0;} .site-header{padding:1rem;} .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;padding:1rem;} .card{border:1px solid #ddd;border-radius:8px;overflow:hidden;} .card-title{margin:0;font-size:1rem;} .card-submeta{font-size:.85rem;color:#555;margin:2px 0 4px;} .card-submeta .label{font-weight:bold;} .card-excerpt{font-size:.9rem;color:#333;} .post-submeta{font-size:.9rem;color:#555;padding:0 1rem;} .post-footer{border-top:1px solid #ddd;padding:1rem;margin-top:2rem;}
+/* Base */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.site-header {
+  padding: 1rem;
+}
+
+/* Grid + Cards */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.card-submeta {
+  font-size: 0.85rem;
+  color: #555;
+  margin: 2px 0 4px;
+}
+
+.card-submeta .label {
+  font-weight: bold;
+}
+
+.card-excerpt {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+/* Post meta + footer */
+.post-submeta {
+  font-size: 0.9rem;
+  color: #555;
+  padding: 0 1rem;
+}
+
+.post-footer {
+  border-top: 1px solid #ddd;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- Comments Section --- */
+.comments {
+  margin: 3rem 0;
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+}
+
+.comments h2 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-light, #ddd);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.comments iframe {
+  width: 100% !important;
+  min-height: 400px;
+  border: none;
+}
