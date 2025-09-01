@@ -1,0 +1,51 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO
+  branch: main
+  auth_type: implicit
+  app_id: YOUR_CLIENT_ID
+
+media_folder: "uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "posts"
+    format: "json"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Entry ID", name: "id", widget: "string", required: false}
+      - {label: "Slug", name: "slug", widget: "string", required: false}
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        field: {label: "Category", name: "item", widget: "string"}
+      - label: "Dates of the Moment"
+        name: "dates"
+        widget: "list"
+        field: {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
+      - {label: "Support Type", name: "support_type", widget: "string", required: false}
+      - {label: "Reflection", name: "html", widget: "markdown"}
+      - {label: "Support Details", name: "support_details", widget: "text", required: false}
+      - {label: "Current Needs", name: "current_needs", widget: "text", required: false}
+      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+      - label: "Pictures"
+        name: "images"
+        widget: "list"
+        field: {label: "Image", name: "image", widget: "image"}
+  - name: "settings"
+    label: "Settings"
+    files:
+      - label: "Site Info"
+        name: "site"
+        file: "assets/site.json"
+        format: "json"
+        fields:
+          - {label: "Title", name: "title", widget: "string"}
+          - {label: "Tagline", name: "tagline", widget: "string"}
+          - {label: "Contact URL", name: "contact_url", widget: "string"}
+          - {label: "Linktree URL", name: "linktree_url", widget: "string"}
