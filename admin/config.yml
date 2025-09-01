@@ -5,8 +5,12 @@ backend:
   auth_type: implicit
   app_id: Ov23libBUT7kEueEeIQu
 
-media_folder: "uploads"
-public_folder: "/uploads"
+site_url: "https://harshini-busireddy.github.io/Living-Gallery"
+publish_mode: editorial_workflow   # lets you save drafts (optional)
+
+# Store images in the repo at /uploads, but reference them with the project path
+media_folder: "uploads"                          # in the repo
+public_folder: "/Living-Gallery/uploads"         # on the website (important!)
 
 collections:
   - name: "posts"
@@ -14,38 +18,42 @@ collections:
     folder: "posts"
     format: "json"
     create: true
-    slug: "{{slug}}"
+    # If you want the URL slug to be the Entry ID, use the next line.
+    # Otherwise, delete it and the slug will be based on Title.
+    slug: "{{fields.id}}"
     extension: "json"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Entry ID", name: "id", widget: "string", required: false}
-      - {label: "Slug", name: "slug", widget: "string", required: false}
+      - { label: "Title", name: "title", widget: "string" }
+
+      # Entry ID (HB-LG-YYYYMMDD-01). Keep required if you use it for slug.
+      - { label: "Entry ID", name: "id", widget: "string", required: true }
+
+      # You don’t need a separate "Slug" field if slug comes from Entry ID.
+      # Remove the next field if you're using slug: "{{fields.id}}".
+      # - { label: "Slug", name: "slug", widget: "string", required: false }
+
       - label: "Categories"
         name: "categories"
         widget: "list"
-        field: {label: "Category", name: "item", widget: "string"}
+        field: { label: "Category", name: "item", widget: "string" }
+
       - label: "Dates of the Moment"
         name: "dates"
         widget: "list"
-        field: {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
-      - {label: "Support Type", name: "support_type", widget: "string", required: false}
-      - {label: "Reflection", name: "html", widget: "markdown"}
-      - {label: "Support Details", name: "support_details", widget: "text", required: false}
-      - {label: "Current Needs", name: "current_needs", widget: "text", required: false}
-      - {label: "Excerpt", name: "excerpt", widget: "text", required: false}
+        field: { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+
+      - { label: "Support Type", name: "support_type", widget: "string", required: false }
+
+      # Reflection body (Markdown so you can write freely)
+      - { label: "Reflection", name: "html", widget: "markdown" }
+
+      - { label: "Support Details", name: "support_details", widget: "text", required: false }
+      - { label: "Current Needs", name: "current_needs", widget: "text", required: false }
+
+      # Optional: if you want a hand-written excerpt. If empty, your site can auto-trim.
+      - { label: "Excerpt", name: "excerpt", widget: "text", required: false }
+
       - label: "Pictures"
         name: "images"
         widget: "list"
-        field: {label: "Image", name: "image", widget: "image"}
-  - name: "settings"
-    label: "Settings"
-    files:
-      - label: "Site Info"
-        name: "site"
-        file: "assets/site.json"
-        format: "json"
-        fields:
-          - {label: "Title", name: "title", widget: "string"}
-          - {label: "Tagline", name: "tagline", widget: "string"}
-          - {label: "Contact URL", name: "contact_url", widget: "string"}
-          - {label: "Linktree URL", name: "linktree_url", widget: "string"}
+        field: { label: "Image", name: "image", widget: "image" }
