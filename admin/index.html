@@ -9,5 +9,12 @@
   <body>
     <!-- Include the script that builds the page and powers Decap CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+    // Explicitly tell Decap where the config is for a project site
+    window.CMS_MANUAL_INIT = true;
+    CMS.init({
+      configPath: '/Living-Gallery/admin/config.yml'
+    });
+    </script>
   </body>
 </html>
