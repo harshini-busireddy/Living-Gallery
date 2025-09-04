@@ -7,14 +7,15 @@
     <title>Content Manager</title>
   </head>
   <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms/dist/decap-cms.js"></script>
+    <!-- 1. Tell Decap CMS you’ll manually initialize -->
     <script>
-    // Explicitly tell Decap where the config is for a project site
-    window.CMS_MANUAL_INIT = true;
-    CMS.init({
-      configPath: '/Living-Gallery/admin/config.yml'
-    });
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <!-- 2. Load Decap CMS library -->
+    <script src="https://unpkg.com/decap-cms/dist/decap-cms.js"></script>
+    <!-- 3. Initialize CMS, point to your config -->
+    <script>
+      CMS.init({ config_path: '/Living-Gallery/admin/config.yml' });
     </script>
   </body>
 </html>
