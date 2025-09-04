@@ -4,13 +4,16 @@ backend:
   branch: main
   auth_type: implicit
   app_id: Ov23libBUT7kEueEeIQu
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
+  site_id: b8255f0f-19ec-4fe6-a923-0585cbaac0f1
 
 site_url: "https://harshini-busireddy.github.io/Living-Gallery/"
-publish_mode: editorial_workflow   # optional
+publish_mode: editorial_workflow
 
 # Project-site paths: prefix public_folder with /Living-Gallery
-media_folder: "uploads"                  # stored in repo
-public_folder: "/Living-Gallery/uploads" # served on site
+media_folder: "uploads"
+public_folder: "/Living-Gallery/uploads"
 
 collections:
   - name: "posts"
@@ -18,7 +21,7 @@ collections:
     folder: "posts"
     format: "json"
     create: true
-    slug: "{{fields.id}}"            # URLs use your EntryID
+    slug: "{{fields.id}}"
     extension: "json"
     fields:
       - { label: "Title", name: "title", widget: "string" }
