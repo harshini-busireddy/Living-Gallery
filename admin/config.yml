@@ -5,7 +5,7 @@ backend:
   auth_type: implicit
   app_id: Ov23libBUT7kEueEeIQu
 
-site_url: "https://harshini-busireddy.github.io/Living-Gallery"
+site_url: "https://harshini-busireddy.github.io/Living-Gallery/"
 publish_mode: editorial_workflow   # optional
 
 # Project-site paths: prefix public_folder with /Living-Gallery
