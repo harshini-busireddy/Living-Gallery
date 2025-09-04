@@ -26,11 +26,18 @@ collections:
       - label: "Categories"
         name: "categories"
         widget: "list"
-        field: { label: "Category", name: "item", widget: "string" }
+        field:
+          label: "Category"
+          name: "item"
+          widget: "string"
       - label: "Dates of the Moment"
         name: "dates"
         widget: "list"
-        field: { label: "Date", name: "date", widget: "date", format: "YYYY-MM-DD" }
+        field:
+          label: "Date"
+          name: "date"
+          widget: "date"
+          format: "YYYY-MM-DD"
       - { label: "Support Type", name: "support_type", widget: "string", required: false }
       - { label: "Reflection", name: "html", widget: "markdown" }
       - { label: "Support Details", name: "support_details", widget: "text", required: false }
@@ -39,7 +46,10 @@ collections:
       - label: "Pictures"
         name: "images"
         widget: "list"
-        field: { label: "Image", name: "image", widget: "image" }
+        field:
+          label: "Image"
+          name: "image"
+          widget: "image"
 
   - name: "settings"
     label: "Settings"
